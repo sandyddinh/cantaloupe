@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Contact(props) {
 	const [items, setItems] = useState([]);
@@ -32,7 +33,9 @@ export default function Contact(props) {
 			{uniqueItems.map(item => {
 				return (
 					<div key={item._id}>
-						<img src={`${item.image[0]}`} />
+						<Link to={`/${item._id}`}>
+							<img src={`${item.image[0]}`} />
+						</Link>
 						<h2 className="item-name">{item.name}</h2>
 						<h4 className="item-price">{item.price}</h4>
 					</div>
