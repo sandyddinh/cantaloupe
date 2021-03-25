@@ -5,6 +5,8 @@ import Home from '../pages/Home';
 import Clothing from '../pages/Clothing';
 import Activewear from '../pages/Activewear';
 import Item from '../pages/Item';
+import Accessories from '../pages/Accessories';
+import Sale from '../pages/Sale';
 
 const routes = [
 	{
@@ -18,19 +20,24 @@ const routes = [
 		path: '/activewear'
 	},
 	{
-		Component: Home,
-		key: 'Home',
-		path: '/home'
+		Component: Accessories,
+		key: 'Accessories',
+		path: '/accessories'
 	},
 	{
-		Component: About,
-		key: 'About',
-		path: '/about'
+		Component: Sale,
+		key: 'Sale',
+		path: '/sale'
 	},
+	// {
+	// 	Component: About,
+	// 	key: 'About',
+	// 	path: '/about'
+	// },
 	{
 		Component: Item,
 		key: 'Item',
-		path: '/:id'
+		path: '/product/:id'
 	},
 	{
 		Component: App,

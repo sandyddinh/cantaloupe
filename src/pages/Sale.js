@@ -13,7 +13,7 @@ export default function Contact(props) {
 			}, {})
 		);
 		const filteredItems = uniqueItems.filter(item => {
-			return item.category == 'Clothing';
+			return item.sale == true;
 		});
 		setFilteredItemList(filteredItems);
 	};
@@ -32,15 +32,16 @@ export default function Contact(props) {
 	}, []);
 
 	return (
-		<div className="ClothingPage">
+		<div className="SalePage">
 			{filteredItemList.map(item => {
 				return (
 					<div key={item._id}>
-						<Link to={`/product/${item._id}`}>
+						<Link to={`/${item._id}`}>
 							<img src={`${item.image[0]}`} />
 						</Link>
 						<h2 className="item-name">{item.name}</h2>
 						<h4 className="item-price">{item.price}</h4>
+						<h4 className="item-sale-price">{item.salePrice}</h4>
 					</div>
 				);
 			})}

@@ -19,17 +19,18 @@ export default function App(props) {
 
 	return (
 		<div className="ItemPage">
-			{Object.keys(item) ? (
+			{Object.keys(item).length ? (
 				<div>
 					{console.log(item)}
 					{console.log(item.image)}
-					{/* <img src={`${item.image[0]}`} /> */}
+					<img src={`${item.image[0]}`} />
 					<h3>{item.name}</h3>
 					<h3>${item.price}</h3>
 					<h3>description</h3>
 					<h3>size</h3>
 					<h3>quantity</h3>
 					<button>Add to Cart ${item.price}</button>
+                    {/* Add Logic for Sale Item */}
 				</div>
 			) : (
 				''

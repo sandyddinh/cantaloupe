@@ -13,7 +13,7 @@ export default function Contact(props) {
 			}, {})
 		);
 		const filteredItems = uniqueItems.filter(item => {
-			return item.category == 'Clothing';
+			return item.category == 'Accessories';
 		});
 		setFilteredItemList(filteredItems);
 	};
@@ -32,7 +32,7 @@ export default function Contact(props) {
 	}, []);
 
 	return (
-		<div className="ClothingPage">
+		<div className="AccessoriesPage">
 			{filteredItemList.map(item => {
 				return (
 					<div key={item._id}>

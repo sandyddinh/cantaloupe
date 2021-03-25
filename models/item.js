@@ -10,7 +10,9 @@ const itemSchema = new Schema(
         quantity: Number,
         size: String,
         price: Number,
-        image: Array
+        image: Array,
+        sale: {type: Boolean, default: false},
+        salePrice: Number
     }
 );
 

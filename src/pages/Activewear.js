@@ -36,7 +36,7 @@ export default function Contact(props) {
 			{filteredItemList.map(item => {
 				return (
 					<div key={item._id}>
-						<Link to={`/${item._id}`}>
+						<Link to={`/product/${item._id}`}>
 							<img src={`${item.image[0]}`} />
 						</Link>
 						<h2 className="item-name">{item.name}</h2>

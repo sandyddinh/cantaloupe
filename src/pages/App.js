@@ -8,6 +8,9 @@ export default function App(props) {
 				<li>Add a shop now image and link</li>
 				<li>Add a section for new arrivals</li>
 				<li>Add a footer</li>
+				<li>Add Shopping Cart</li>
+				<li>Add Stripe Integration</li>
+				<li>Add Favorites?</li>
 			</ul>
 			The pages should be:
 			<ul>
