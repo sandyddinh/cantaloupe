@@ -5,6 +5,7 @@ const itemSchema = new Schema(
         name: String,
         category: String,
         subCategory: String,
+        description: String,
         color: String,
         quantity: Number,
         size: String,
