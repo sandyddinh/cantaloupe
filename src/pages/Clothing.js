@@ -3,16 +3,19 @@ import { Link } from 'react-router-dom';
 
 export default function Contact(props) {
 	const [items, setItems] = useState([]);
-	const [uniqueItems, setUniqueItems] = useState([]);
+	const [filteredItemList, setFilteredItemList] = useState([]);
 
-	const filterItems = items => {
-		const output = Object.values(
+	const removeDuplicatesAndFilterByClothing = items => {
+		const uniqueItems = Object.values(
 			items.reduce((acc, obj) => {
 				if (!acc[obj.name]) acc[obj.name] = obj;
 				return acc;
 			}, {})
 		);
-		setUniqueItems(output);
+		const filteredItems = uniqueItems.filter(item => {
+			return item.category == 'Clothing';
+		});
+		setFilteredItemList(filteredItems);
 	};
 
 	useEffect(() => {
@@ -21,7 +24,7 @@ export default function Contact(props) {
 				const response = await fetch('/api/cantaloupe');
 				const data = await response.json();
 				setItems(data);
-				filterItems(data);
+				removeDuplicatesAndFilterByClothing(data);
 			} catch (error) {
 				console.error(error);
 			}
@@ -30,7 +33,7 @@ export default function Contact(props) {
 
 	return (
 		<div className="ClothingPage">
-			{uniqueItems.map(item => {
+			{filteredItemList.map(item => {
 				return (
 					<div key={item._id}>
 						<Link to={`/${item._id}`}>
