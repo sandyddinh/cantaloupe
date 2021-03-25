@@ -6,6 +6,8 @@ body {
   font-size: 16px;
 }
 
+
+
 .NavBar {
   display: flex;
   justify-content: space-around;
@@ -21,8 +23,11 @@ body {
 
 }
 
-.ContactPage{
-
+.ClothingPage{
+  img {
+    width: 20%;
+    height: auto;
+  }
 }
 
 .AppPage {
