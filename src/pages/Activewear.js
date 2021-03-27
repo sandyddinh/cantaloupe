@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Contact(props) {
+export default function Activewear(props) {
 	const [items, setItems] = useState([]);
 	const [filteredItemList, setFilteredItemList] = useState([]);
 

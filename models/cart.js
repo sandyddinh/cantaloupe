@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const cartSchema = new Schema({
-    items: Object,
+    product: Object,
     totalPrice: Number,
     totalQty: Number
 });

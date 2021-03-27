@@ -7,6 +7,7 @@ import Activewear from '../pages/Activewear';
 import Item from '../pages/Item';
 import Accessories from '../pages/Accessories';
 import Sale from '../pages/Sale';
+import ShoppingCart from '../pages/ShoppingCart';
 
 const routes = [
 	{
@@ -28,6 +29,11 @@ const routes = [
 		Component: Sale,
 		key: 'Sale',
 		path: '/sale'
+	},
+	{
+		Component: ShoppingCart,
+		key: 'ShoppingCart',
+		path: '/cart'
 	},
 	// {
 	// 	Component: About,
