@@ -30,7 +30,7 @@ export default function App(props) {
 					<h3>size</h3>
 					<h3>quantity</h3>
 					<button>Add to Cart ${item.price}</button>
-                    {/* Add Logic for Sale Item */}
+					{/* Add Logic for Sale Item */}
 				</div>
 			) : (
 				''
