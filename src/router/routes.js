@@ -8,6 +8,7 @@ import Item from '../pages/Item';
 import Accessories from '../pages/Accessories';
 import Sale from '../pages/Sale';
 import ShoppingCart from '../pages/ShoppingCart';
+import Checkout from '../pages/Checkout';
 
 const routes = [
 	{
@@ -34,6 +35,11 @@ const routes = [
 		Component: ShoppingCart,
 		key: 'ShoppingCart',
 		path: '/cart'
+	},
+	{
+		Component: Checkout,
+		key: 'Checkout',
+		path: '/checkout'
 	},
 	// {
 	// 	Component: About,
