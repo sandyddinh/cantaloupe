@@ -1,10 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function Item(props) {
+	console.log('testing props');
+	console.log(props);
+	const items = props.location.state;
+	console.log(items);
 	const [item, setItem] = useState({});
 	const productId = useRef();
 	const price = useRef();
 	const qty = useRef();
+	const size = useRef();
+
+	let foundProductIdBySize = '';
+	const findProductBySize = item => {
+		const foundProduct = items.filter(product => {
+			return product.name == item.name;
+		});
+		console.log(foundProduct);
+		for (let i = 0; i < foundProduct.length; i++) {
+			if (size.current.value == foundProduct[i].size) {
+				foundProductIdBySize = foundProduct[i]._id;
+			}
+		}
+		console.log('in the function' + foundProductIdBySize);
+	};
 
 	useEffect(() => {
 		(async () => {
@@ -21,8 +40,10 @@ export default function Item(props) {
 	}, []);
 
 	const addToCart = async e => {
-		const totalPrice = price.current.value * quantity.current.value;
 		e.preventDefault();
+		const totalPrice = item.price * qty.current.value;
+		findProductBySize(item);
+		console.log('before try' + foundProductIdBySize);
 		try {
 			const response = await fetch('/api/cantaloupe/cart', {
 				method: 'POST',
@@ -31,12 +52,12 @@ export default function Item(props) {
 				},
 				body: JSON.stringify({
 					product: {
-						id: productId.current.value,
-						price: price.current.value,
-						qty: quantity.current.value
+						id: foundProductIdBySize,
+						price: item.price,
+						qty: qty.current.value
 					},
 					totalPrice: totalPrice,
-					totalQty: quantity.current.value
+					totalQty: qty.current.value
 				})
 			});
 		} catch (error) {
@@ -49,27 +70,19 @@ export default function Item(props) {
 			{Object.keys(item).length ? (
 				<div>
 					<img src={`${item.image[0]}`} />
+					<h3>{item.name}</h3>
+					<h3>${item.price}</h3>
+					<h3>description</h3>
 					<form onSubmit={addToCart}>
-						{/* <h3>{item.name}</h3>
-						<h3>${item.price}</h3>	 */}
-						<input type="text">{item.name}</input>
-						<input type="text" ref={productId}>
-							{item._id}
-						</input>
-						$
-						<input type="text" ref={price}>
-							{item.price}
-						</input>
-						<h3>description</h3>
 						<label>Size:</label>
-						<select id="size">
-							<option value="xs">X-Small</option>
-							<option value="s">Small</option>
-							<option value="m">Medium</option>
-							<option value="l">Large</option>
+						<select id="size" ref={size}>
+							<option value="XS">X-Small</option>
+							<option value="S">Small</option>
+							<option value="M">Medium</option>
+							<option value="L">Large</option>
 						</select>
 						<label>Quantity:</label>
-						<select id="quantity" ref={quantity}>
+						<select id="quantity" ref={qty}>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>

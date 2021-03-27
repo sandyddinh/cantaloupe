@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 export default function Clothing(props) {
 	const [items, setItems] = useState([]);
@@ -36,7 +36,7 @@ export default function Clothing(props) {
 			{filteredItemList.map(item => {
 				return (
 					<div key={item._id}>
-						<Link to={`/product/${item._id}`}>
+						<Link to={{ pathname: `/product/${item._id}`, state: items }}>
 							<img src={`${item.image[0]}`} />
 						</Link>
 						<h2 className="item-name">{item.name}</h2>
