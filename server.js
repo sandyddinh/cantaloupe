@@ -25,6 +25,7 @@ if (process.env.NODE_ENV !== 'development'){
 app.use(/\.[0-9a-z]+$/i, express.static('public'));
 
 /* Controller */
+app.use('/api/cantaloupe/cart', require('./controllers/carts'));
 app.use('/api/cantaloupe/', require('./controllers/items'));
 
 
