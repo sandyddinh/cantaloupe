@@ -33,17 +33,19 @@ export default function Clothing(props) {
 
 	return (
 		<div className="ClothingPage">
-			{filteredItemList.map(item => {
-				return (
-					<div key={item._id}>
-						<Link to={{ pathname: `/product/${item._id}`, state: items }}>
-							<img src={`${item.image[0]}`} />
-						</Link>
-						<h2 className="item-name">{item.name}</h2>
-						<h4 className="item-price">{item.price}</h4>
-					</div>
-				);
-			})}
+			<div className="products-display">
+				{filteredItemList.map(item => {
+					return (
+						<div key={item._id} className="product-container">
+							<Link to={{ pathname: `/product/${item._id}`, state: items }}>
+								<img src={`${item.image[0]}`} />
+							</Link>
+							<h2 className="item-name">{item.name}</h2>
+							<h4 className="item-price">{item.price}</h4>
+						</div>
+					);
+				})}
+			</div>
 		</div>
 	);
 }

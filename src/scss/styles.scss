@@ -6,9 +6,8 @@ body {
   font-size: 16px;
 }
 
-img {
-  width: 20%;
-  height: auto;
+.SideBar {
+  width: 15vw;
 }
 
 .NavBar {
@@ -26,8 +25,25 @@ img {
 
 }
 
-.ClothingPage{
-  
+.ClothingPage, .ActivewearPage, .AccessoriesPage, .SalePage {
+  img {
+    width: 200px;
+    height: auto;
+  }
+  .item-name, .item-price {
+    font-size: 14px;
+  }
+  .products-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .product-container {
+    height: auto;
+    width: 200px;
+    border: 1px solid red;
+    margin: 10px;
+  }
 }
 
 .AppPage {
