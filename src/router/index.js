@@ -7,17 +7,19 @@ import routes from './routes';
 const AppRouter = () => {
 	return (
 		<Router>
-			<SideBar />
 			<NavBar routes={routes} />
-			<Switch>
-				{routes.map(({ Component, key, path }) => (
-					<Route
-						key={key}
-						path={path}
-						component={props => <Component page={key} {...props} />}
-					></Route>
-				))}
-			</Switch>
+			<div className="middle-body">
+				<SideBar />
+				<Switch>
+					{routes.map(({ Component, key, path }) => (
+						<Route
+							key={key}
+							path={path}
+							component={props => <Component page={key} {...props} />}
+						></Route>
+					))}
+				</Switch>
+			</div>
 		</Router>
 	);
 };

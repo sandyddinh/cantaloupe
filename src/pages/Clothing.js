@@ -38,10 +38,19 @@ export default function Clothing(props) {
 					return (
 						<div key={item._id} className="product-container">
 							<Link to={{ pathname: `/product/${item._id}`, state: items }}>
-								<img src={`${item.image[0]}`} />
+								<div className="product-image">
+									<img
+										className="product-image-main"
+										src={`${item.image[0]}`}
+									/>
+									<img
+										className="product-image-hover"
+										src={`${item.image[1]}`}
+									/>
+								</div>
 							</Link>
 							<h2 className="item-name">{item.name}</h2>
-							<h4 className="item-price">{item.price}</h4>
+							<h4 className="item-price">${item.price}</h4>
 						</div>
 					);
 				})}

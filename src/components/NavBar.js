@@ -11,21 +11,26 @@ const NavBar = props => {
 						{key}
 					</Link>
 				))} */}
-			<Link key={'Clothing'} to={'/clothing'}>
-				Clothing
-			</Link>
-			<Link key={'Activewear'} to={'/activewear'}>
-				Activewear
-			</Link>
-			<Link key={'Accessories'} to={'/accessories'}>
-				Accessories
-			</Link>
-			<Link key={'Sale'} to={'/sale'}>
-				Sale
-			</Link>
-			<Link key={'ShoppingCart'} to={'/cart'}>
-				Shopping Cart
-			</Link>
+			<div className="nav-banner">Spend $100+ for free shipping anywhere!</div>
+			<h1 className="brand-name">C a n t a l o u p e</h1>
+			<div className="categories">
+				<Link key={'Clothing'} to={'/clothing'}>
+					<h2 className="category-name">Clothing</h2>
+				</Link>
+				<Link key={'Activewear'} to={'/activewear'}>
+					<h2 className="category-name">Activewear</h2>
+				</Link>
+				<Link key={'Accessories'} to={'/accessories'}>
+					<h2 className="category-name">Accessories</h2>
+				</Link>
+				<Link key={'Sale'} to={'/sale'}>
+					<h2 className="category-name sale">Sale</h2>
+				</Link>
+				<Link key={'ShoppingCart'} to={'/cart'}>
+					<h2 className="category-name">Shopping Cart</h2>
+				</Link>
+			</div>
+			<hr />
 		</nav>
 	);
 };

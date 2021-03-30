@@ -1,37 +1,126 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 @import "reset";
 @import "grid";
 
+$cantaloupe: #E29578;
+$grey: #463f3a;
+
 body {
-  font-size: 16px;
+  font-size: 12px;
+  height: calc(100vh - 120px);
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: $grey;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box; 
+
+hr {
+  color: $grey;
 }
 
-.SideBar {
-  width: 15vw;
+a {
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .NavBar {
+  width: 100vw;
+  height: 120x;
+  background-color: white;
+  text-align: center;
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    color: $grey;
+    font-size: 48px;
+    text-transform: uppercase;
+    padding: 15px 0;
+  }
+  .nav-banner {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
-  background-color: #f0f0f0;
+  background-color: $cantaloupe;
+  font-size: 14px;
+  text-transform: uppercase;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  }
+  .categories {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 200px;
+  }
+  .category-name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: $grey;
+  }
+  .sale {
+    color: $cantaloupe;
+  }
 }
 
-.HomePage {
-
+.middle-body {
+  display: flex;
 }
 
-.AboutPage {
-
+.SideBar {
+  background-color: white;
+  height: 100vh;
+  width: 200px;
+  padding: 30px;
+  font-size: 12px;
+  .expand-filter {
+    text-align: right;
+    color: $cantaloupe;
+  }
 }
+
+
 
 .ClothingPage, .ActivewearPage, .AccessoriesPage, .SalePage {
+  width: calc( 100vw - 200px);
+  height: 100vh;
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
+  color: $grey;
+  font-size: 12px;
+  padding: 0 20px 0 0;
+  .product-image {
+    position: relative;
+    max-width: 100%;
+    .product-image-hover {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    &:hover .product-image-hover {
+      opacity: 1;
+    }
+  }
   img {
     width: 200px;
     height: auto;
   }
   .item-name, .item-price {
-    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    color: $grey;
+    font-size: 12px;
+  }
+  .item-price {
+    font-weight: normal;
   }
   .products-display {
     display: flex;
@@ -40,12 +129,9 @@ body {
   }
   .product-container {
     height: auto;
-    width: 200px;
-    border: 1px solid red;
+    width: 20%;
+    // border: 1px solid red;
     margin: 10px;
   }
 }
-
-.AppPage {
-
 }
