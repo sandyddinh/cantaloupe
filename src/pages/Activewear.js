@@ -50,7 +50,14 @@ export default function Activewear(props) {
 								</div>
 							</Link>
 							<h2 className="item-name">{item.name}</h2>
-							<h4 className="item-price">{item.price}</h4>
+							{item.sale ? (
+								<h4 className="item-price">
+									<span className="sale-price">${item.salePrice}</span>{' '}
+									<span className="original-price">${item.price}</span>
+								</h4>
+							) : (
+								<h4 className="item-price">${item.price}</h4>
+							)}
 						</div>
 					);
 				})}

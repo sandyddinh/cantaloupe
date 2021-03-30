@@ -122,6 +122,12 @@ a:hover {
   .item-price {
     font-weight: normal;
   }
+  .sale-price {
+    color: $cantaloupe;
+  }
+  .original-price {
+    text-decoration: line-through;
+  }
   .products-display {
     display: flex;
     flex-wrap: wrap;
