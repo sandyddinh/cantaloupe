@@ -33,17 +33,28 @@ export default function Activewear(props) {
 
 	return (
 		<div className="ActivewearPage">
-			{filteredItemList.map(item => {
-				return (
-					<div key={item._id}>
-						<Link to={`/product/${item._id}`}>
-							<img src={`${item.image[0]}`} />
-						</Link>
-						<h2 className="item-name">{item.name}</h2>
-						<h4 className="item-price">{item.price}</h4>
-					</div>
-				);
-			})}
+			<div className="products-display">
+				{filteredItemList.map(item => {
+					return (
+						<div key={item._id} className="product-container">
+							<Link to={`/product/${item._id}`}>
+								<div className="product-image">
+									<img
+										className="product-image-main"
+										src={`${item.image[0]}`}
+									/>
+									<img
+										className="product-image-hover"
+										src={`${item.image[1]}`}
+									/>
+								</div>
+							</Link>
+							<h2 className="item-name">{item.name}</h2>
+							<h4 className="item-price">{item.price}</h4>
+						</div>
+					);
+				})}
+			</div>
 		</div>
 	);
 }
