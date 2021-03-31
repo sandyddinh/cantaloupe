@@ -4,7 +4,7 @@ export default function Item(props) {
 	// console.log('testing props');
 	// console.log(props);
 	const items = props.location.state;
-	console.log(items);
+	// console.log(items);
 	const [genericItem, setGenericItem] = useState({});
 	const [item, setItem] = useState([]);
 	// const productId = useRef();
@@ -28,7 +28,7 @@ export default function Item(props) {
 			return product.name == item.name;
 		});
 		setItem(foundProduct);
-		console.log('found product' + typeof foundProduct);
+		// console.log('found product' + typeof foundProduct);
 	};
 
 	let foundProductIdBySize = '';
@@ -91,7 +91,7 @@ export default function Item(props) {
 		<div className="ItemPage">
 			{Object.keys(genericItem).length ? (
 				<>
-					{console.log(item)}
+					{/* {console.log(item)} */}
 					<div className="main-image">
 						<img src={`${genericItem.image[0]}`} />
 					</div>
@@ -123,18 +123,25 @@ export default function Item(props) {
 								{item.map(item => {
 									if (item.quantity) {
 										return (
-											<div className="size-button" id={item.size}>
-												<input type="radio" id={item.size} value={item.size} />
+											<div className="size-button" key={item.size}>
+												<input
+													type="radio"
+													id={item.size}
+													value={item.size}
+													name="size"
+													className="radio-button"
+												/>
 												<label htmlFor={item.size}>{item.size}</label>
 											</div>
 										);
 									} else {
 										return (
-											<div className="size-button" id={item.size}>
+											<div className="size-button" key={item.size}>
 												<input
 													type="radio"
 													id={item.size}
 													value={item.size}
+													name="size"
 													disabled
 												/>
 												<label htmlFor={item.size}>{item.size}</label>
