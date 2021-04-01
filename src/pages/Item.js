@@ -10,7 +10,7 @@ export default function Item(props) {
 	const [quantity, setQuantity] = useState(0);
 	// const productId = useRef();
 	// const price = useRef();
-	const qty = useRef();
+	// const qty = useRef();
 	const size = useRef();
 
 	const increment = () => {
@@ -63,7 +63,7 @@ export default function Item(props) {
 
 	const addToCart = async e => {
 		e.preventDefault();
-		const totalPrice = genericItem.price * qty.current.value;
+		const totalPrice = genericItem.price * quantity;
 		findProductBySize(genericItem);
 		// console.log('before try' + foundProductIdBySize);
 		try {
@@ -76,10 +76,10 @@ export default function Item(props) {
 					product: {
 						id: foundProductIdBySize,
 						price: genericItem.price,
-						qty: qty.current.value
+						qty: quantity
 					},
 					totalPrice: totalPrice,
-					totalQty: qty.current.value
+					totalQty: quantity
 				})
 			});
 		} catch (error) {
@@ -155,7 +155,7 @@ export default function Item(props) {
 								<button onClick={decrement} className="quantity-button">
 									-
 								</button>
-								<input type="text" ref={qty} placeholder={quantity} />
+								<input type="text" placeholder={quantity} />
 								<button onClick={increment} className="quantity-button">
 									+
 								</button>
