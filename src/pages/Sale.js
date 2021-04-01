@@ -37,7 +37,7 @@ export default function Sale(props) {
 				{filteredItemList.map(item => {
 					return (
 						<div key={item._id} className="product-container">
-							<Link to={`/${item._id}`}>
+							<Link to={`product/${item._id}`}>
 								<div className="product-image">
 									<img
 										className="product-image-main"

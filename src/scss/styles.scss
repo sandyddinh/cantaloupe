@@ -4,7 +4,7 @@
 @import "grid";
 
 $cantaloupe: #E29578;
-$teal: #118ab2;
+$teal: #006d77;
 $grey: #463f3a;
 
 body {
@@ -78,15 +78,36 @@ a:hover {
   width: 200px;
   padding: 30px;
   font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
   .expand-filter {
     text-align: right;
     color: $cantaloupe;
   }
 }
 
+.Footer {
+  // background-color: $cantaloupe;
+  background-image: linear-gradient(to bottom right, #ffd6ba, $cantaloupe);
+  display: flex;
+  justify-content: space-around;
+  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 20px 200px;
+  section {
+    width: 120px;
+    line-height: 2;
+  }
+  h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: $grey;
+  }
+}
+
 .ClothingPage, .ActivewearPage, .AccessoriesPage, .SalePage {
   width: calc( 100vw - 200px);
-  height: 100vh;
+  height: auto;
   background-color: white;
   font-family: 'Open Sans', sans-serif;
   color: $grey;
@@ -148,6 +169,7 @@ a:hover {
   img {
     max-width: 100%;
     height: auto;
+    padding: 20px;
   }
 
   .fa-star {
@@ -160,7 +182,7 @@ a:hover {
 
   .main-image, .product-information {
     width: calc(( 100vw - 200px)/2);
-    padding: 0px 20px;
+    padding-bottom: 30px;
   }
 
   .product-information {
@@ -281,7 +303,7 @@ a:hover {
       text-align: center;
     }
   }
-
 }
+
 
 }
