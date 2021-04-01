@@ -7,21 +7,21 @@ export default function Item(props) {
 	// console.log(items);
 	const [genericItem, setGenericItem] = useState({});
 	const [item, setItem] = useState([]);
+	const [quantity, setQuantity] = useState(0);
 	// const productId = useRef();
 	// const price = useRef();
 	const qty = useRef();
 	const size = useRef();
 
-	// const findSizes = item => {
-	// 	const foundProduct = items.filter(product => {
-	// 		return product.name == item.name;
-	// 	});
-	// 	console.log(foundProduct);
-	// 	for (let i = 0; i < foundProduct.length; i++) {
-	// 		setSizes([...sizes, foundProduct[i].size]);
-	// 	}
-	// 	console.log('sizes array' + sizes);
-	// };
+	const increment = () => {
+		setQuantity(quantity + 1);
+	};
+
+	const decrement = () => {
+		if (quantity != 0) {
+			setQuantity(quantity - 1);
+		}
+	};
 
 	const findAllOfItem = item => {
 		const foundProduct = items.filter(product => {
@@ -150,19 +150,16 @@ export default function Item(props) {
 									}
 								})}
 							</div>
-							{/* <select id="size" ref={size}>
-								<option value="XS">X-Small</option>
-								<option value="S">Small</option>
-								<option value="M">Medium</option>
-								<option value="L">Large</option>
-							</select> */}
-							<br />
 							<label>Quantity:</label>
-							<select id="quantity" ref={qty}>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-							</select>
+							<div className="quantity-container">
+								<button onClick={decrement} className="quantity-button">
+									-
+								</button>
+								<input type="text" ref={qty} placeholder={quantity} />
+								<button onClick={increment} className="quantity-button">
+									+
+								</button>
+							</div>
 							<br />
 							<p>Enjoy FREE RETURNS on all orders.</p>
 							<input
