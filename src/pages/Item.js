@@ -11,6 +11,8 @@ export default function Item(props) {
 	// const productId = useRef();
 	// const price = useRef();
 	// const qty = useRef();
+	const [mainImage, setMainImage] = useState();
+	const [updateImage, setUpdateImage] = useState(false);
 	const size = useRef();
 
 	const increment = () => {
@@ -21,6 +23,11 @@ export default function Item(props) {
 		if (quantity != 0) {
 			setQuantity(quantity - 1);
 		}
+	};
+
+	const changeImage = img => {
+		setMainImage(img);
+		setUpdateImage(true);
 	};
 
 	const findAllOfItem = item => {
@@ -53,13 +60,14 @@ export default function Item(props) {
 				);
 				const data = await response.json();
 				setGenericItem(data);
+				setMainImage(data.image[0]);
 				findAllOfItem(data);
 				// findSizes(data);
 			} catch (error) {
 				console.error(error);
 			}
 		})();
-	}, []);
+	}, [updateImage]);
 
 	const addToCart = async e => {
 		e.preventDefault();
@@ -93,17 +101,16 @@ export default function Item(props) {
 				<>
 					<div className="image-previews">
 						{genericItem.image.map(img => {
-							// for (let i = 0; i < genericItem.image.length; i++){
 							return (
-								<div className="image-small">
+								<div className="image-small" onClick={() => setMainImage(img)}>
 									<img src={img} />
 								</div>
 							);
-							// }
 						})}
 					</div>
 					<div className="main-image">
-						<img src={`${genericItem.image[0]}`} />
+						{/* <img src={`${genericItem.image[0]}`} /> */}
+						<img src={mainImage} />
 					</div>
 					<div className="product-information">
 						<p className="item-name">{genericItem.name}</p>
