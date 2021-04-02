@@ -91,7 +91,17 @@ export default function Item(props) {
 		<div className="ItemPage">
 			{Object.keys(genericItem).length ? (
 				<>
-					{/* {console.log(item)} */}
+					<div className="image-previews">
+						{genericItem.image.map(img => {
+							// for (let i = 0; i < genericItem.image.length; i++){
+							return (
+								<div className="image-small">
+									<img src={img} />
+								</div>
+							);
+							// }
+						})}
+					</div>
 					<div className="main-image">
 						<img src={`${genericItem.image[0]}`} />
 					</div>

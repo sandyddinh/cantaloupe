@@ -180,6 +180,18 @@ a:hover {
     color: $teal;
   }
 
+ .image-previews {
+   background-color: white;
+   display: flex;
+   flex-direction: column;
+   width: 200px;
+   height: auto;
+   .image-small {
+     width: 50px;
+     height: auto;
+   }
+ }
+
   .main-image, .product-information {
     width: calc(( 100vw - 200px)/2);
     padding-bottom: 30px;

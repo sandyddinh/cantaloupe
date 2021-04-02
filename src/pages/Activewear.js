@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import SideBar from '../components/SideBar';
 
 export default function Activewear(props) {
 	const [items, setItems] = useState([]);
@@ -32,36 +33,39 @@ export default function Activewear(props) {
 	}, []);
 
 	return (
-		<div className="ActivewearPage">
-			<div className="products-display">
-				{filteredItemList.map(item => {
-					return (
-						<div key={item._id} className="product-container">
-							<Link to={`/product/${item._id}`}>
-								<div className="product-image">
-									<img
-										className="product-image-main"
-										src={`${item.image[0]}`}
-									/>
-									<img
-										className="product-image-hover"
-										src={`${item.image[1]}`}
-									/>
-								</div>
-							</Link>
-							<h2 className="item-name">{item.name}</h2>
-							{item.sale ? (
-								<h4 className="item-price">
-									<span className="sale-price">${item.salePrice}</span>{' '}
-									<span className="original-price">${item.price}</span>
-								</h4>
-							) : (
-								<h4 className="item-price">${item.price}</h4>
-							)}
-						</div>
-					);
-				})}
+		<>
+			<SideBar />
+			<div className="ActivewearPage">
+				<div className="products-display">
+					{filteredItemList.map(item => {
+						return (
+							<div key={item._id} className="product-container">
+								<Link to={`/product/${item._id}`}>
+									<div className="product-image">
+										<img
+											className="product-image-main"
+											src={`${item.image[0]}`}
+										/>
+										<img
+											className="product-image-hover"
+											src={`${item.image[1]}`}
+										/>
+									</div>
+								</Link>
+								<h2 className="item-name">{item.name}</h2>
+								{item.sale ? (
+									<h4 className="item-price">
+										<span className="sale-price">${item.salePrice}</span>{' '}
+										<span className="original-price">${item.price}</span>
+									</h4>
+								) : (
+									<h4 className="item-price">${item.price}</h4>
+								)}
+							</div>
+						);
+					})}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 }
