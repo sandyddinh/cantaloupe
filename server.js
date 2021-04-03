@@ -4,8 +4,9 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 const mongoose = require('mongoose');
 const path = require('path');
-const stripe = require('stripe')('sk_test_51IZiVpCZzgAQXehg6ZnMvqWFR4woJK7jePrXfYN7di6pAyIfYahcz1nkpZgDwlgEw1N1QP6mmuLHwm6GbmguxQx800Bbs0qenG');
-const DOMAIN = 'http://localhost:3000';
+const bodyParser = require('body-parser');
+const postCharge = require('./src/stripe');
+const paymentRouter = express.Router();
 
 const MONGODB_URI = process.env.MONGODB_URI
 const db = mongoose.connection;
@@ -30,28 +31,26 @@ app.use(/\.[0-9a-z]+$/i, express.static('public'));
 app.use('/api/cantaloupe/cart', require('./controllers/carts'));
 app.use('/api/cantaloupe/', require('./controllers/items'));
 
-app.post('/checkout', async (req, res) => {
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: 'Stubborn Attachments',
-              images: ['https://i.imgur.com/EHyR2nP.png'],
-            },
-            unit_amount: 2000,
-          },
-          quantity: 1,
-        },
-      ],
-      mode: 'payment',
-      success_url: `${DOMAIN}/success.html`,
-      cancel_url: `${DOMAIN}/cancel.html`,
-    });
-    res.json({ id: session.id });
-  });
+/* Payments Controller */
+paymentRouter.post('/stripe/charge', postCharge)
+paymentRouter.all('*', (_, res) =>
+  res.json({ message: 'please make a POST request to /stripe/charge' })
+) // catch all other requests
+app.use((_, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  )
+  next()
+}) // define middleware to enable CORS for all requests
+app.use(bodyParser.json())
+app.use('/api', paymentRouter)
+app.use(express.static(path.join(__dirname, './public')))
+
+app.get('*', (_, res) => {
+  res.sendFile(path.resolve(__dirname, './public/index.html'))
+})
 
 //LISTENER
 
