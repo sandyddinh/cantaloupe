@@ -14,6 +14,7 @@ export default function Item(props) {
 	const [mainImage, setMainImage] = useState();
 	const [updateImage, setUpdateImage] = useState(false);
 	const [size, setSize] = useState('');
+	const [purchasePrice, setPurchasePrice] = useState();
 
 	const increment = () => {
 		setQuantity(quantity + 1);
@@ -22,6 +23,14 @@ export default function Item(props) {
 	const decrement = () => {
 		if (quantity != 0) {
 			setQuantity(quantity - 1);
+		}
+	};
+
+	const findPurchasePrice = item => {
+		if (item.sale) {
+			setPurchasePrice(item.salePrice);
+		} else {
+			setPurchasePrice(item.price);
 		}
 	};
 
@@ -62,6 +71,7 @@ export default function Item(props) {
 				setGenericItem(data);
 				setMainImage(data.image[0]);
 				findAllOfItem(data);
+				findPurchasePrice(data);
 				// findSizes(data);
 			} catch (error) {
 				console.error(error);
@@ -87,7 +97,7 @@ export default function Item(props) {
 					product: {
 						id: foundProductIdBySize,
 						name: genericItem.name,
-						price: genericItem.price,
+						price: purchasePrice,
 						qty: quantity,
 						image: genericItem.image[0],
 						color: genericItem.color,
