@@ -137,8 +137,9 @@ export default function Item(props) {
 						<form onSubmit={addToCart}>
 							<label>Size:</label>
 							<div className="size-container">
+								{console.log('item is:' + item)}
 								{item.map(item => {
-									if (item.quantity) {
+									if (item.quantity > 0) {
 										return (
 											<div className="size-button" key={item.size}>
 												<input
@@ -159,9 +160,12 @@ export default function Item(props) {
 													id={item.size}
 													value={item.size}
 													name="size"
+													className="radio-button"
 													disabled
 												/>
-												<label htmlFor={item.size}>{item.size}</label>
+												<label htmlFor={item.size} className="out-of-stock">
+													{item.size}
+												</label>
 											</div>
 										);
 									}
