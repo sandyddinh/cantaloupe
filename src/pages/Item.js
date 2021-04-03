@@ -13,7 +13,7 @@ export default function Item(props) {
 	// const qty = useRef();
 	const [mainImage, setMainImage] = useState();
 	const [updateImage, setUpdateImage] = useState(false);
-	const size = useRef();
+	const [size, setSize] = useState('');
 
 	const increment = () => {
 		setQuantity(quantity + 1);
@@ -45,7 +45,7 @@ export default function Item(props) {
 		});
 		// console.log(foundProduct);
 		for (let i = 0; i < foundProduct.length; i++) {
-			if (size.current.value == foundProduct[i].size) {
+			if (size == foundProduct[i].size) {
 				foundProductIdBySize = foundProduct[i]._id;
 			}
 		}
@@ -75,10 +75,7 @@ export default function Item(props) {
 		await findProductBySize(genericItem);
 		// console.log('before try' + foundProductIdBySize);
 		console.log(
-			'purchasing size: ' +
-				size.current.value +
-				' and product id ' +
-				foundProductIdBySize
+			'purchasing size: ' + size + ' and product id ' + foundProductIdBySize
 		);
 		try {
 			const response = await fetch('/api/cantaloupe/cart', {
@@ -94,7 +91,7 @@ export default function Item(props) {
 						qty: quantity,
 						image: genericItem.image[0],
 						color: genericItem.color,
-						size: size.current.value
+						size: size
 					}
 				})
 			});
@@ -148,14 +145,17 @@ export default function Item(props) {
 							{item.map(item => {
 								if (item.quantity > 0) {
 									return (
-										<div className="size-button" key={item.size}>
+										<div
+											className="size-button"
+											key={item.size}
+											onClick={() => setSize(item.size)}
+										>
 											<input
 												type="radio"
 												id={item.size}
 												value={item.size}
 												name="size"
 												className="radio-button"
-												ref={size}
 											/>
 											<label htmlFor={item.size}>{item.size}</label>
 										</div>

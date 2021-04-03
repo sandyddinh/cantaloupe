@@ -1,12 +1,15 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import routes from './routes';
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
 
 const AppRouter = () => {
 	return (
-		<Router>
+		<Router history={history}>
 			<NavBar routes={routes} />
 			<div className="middle-body">
 				<Switch>
@@ -15,6 +18,7 @@ const AppRouter = () => {
 							key={key}
 							path={path}
 							component={props => <Component page={key} {...props} />}
+							history={history}
 						></Route>
 					))}
 				</Switch>
