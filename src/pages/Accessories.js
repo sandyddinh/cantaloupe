@@ -40,7 +40,7 @@ export default function Accessories(props) {
 					{filteredItemList.map(item => {
 						return (
 							<div key={item._id} className="product-container">
-								<Link to={`/product/${item._id}`}>
+								<Link to={{ pathname: `/product/${item._id}`, state: items }}>
 									<div className="product-image">
 										<img
 											className="product-image-main"
