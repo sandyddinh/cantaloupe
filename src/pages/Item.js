@@ -194,9 +194,10 @@ export default function Item(props) {
 						<button
 							type="submit"
 							className="addToCartButton"
-							value={`Add to Basket $${genericItem.price}`}
 							onClick={addToCart}
-						/>
+						>
+							Add to Basket ${genericItem.price}
+						</button>
 						{/* </form> */}
 					</div>
 				</>
