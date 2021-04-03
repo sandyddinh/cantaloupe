@@ -71,9 +71,15 @@ export default function Item(props) {
 
 	const addToCart = async e => {
 		e.preventDefault();
-		const totalPrice = genericItem.price * quantity;
-		findProductBySize(genericItem);
+		// const totalPrice = genericItem.price * quantity;
+		await findProductBySize(genericItem);
 		// console.log('before try' + foundProductIdBySize);
+		console.log(
+			'purchasing size: ' +
+				size.current.value +
+				' and product id ' +
+				foundProductIdBySize
+		);
 		try {
 			const response = await fetch('/api/cantaloupe/cart', {
 				method: 'POST',
@@ -83,11 +89,13 @@ export default function Item(props) {
 				body: JSON.stringify({
 					product: {
 						id: foundProductIdBySize,
+						name: genericItem.name,
 						price: genericItem.price,
-						qty: quantity
-					},
-					totalPrice: totalPrice,
-					totalQty: quantity
+						qty: quantity,
+						image: genericItem.image[0],
+						color: genericItem.color,
+						size: size.current.value
+					}
 				})
 			});
 		} catch (error) {
@@ -134,62 +142,62 @@ export default function Item(props) {
 							Color: <span className="emphasize">{genericItem.color}</span>
 						</p>
 						<p>{genericItem.description}</p>
-						<form onSubmit={addToCart}>
-							<label>Size:</label>
-							<div className="size-container">
-								{console.log('item is:' + item)}
-								{item.map(item => {
-									if (item.quantity > 0) {
-										return (
-											<div className="size-button" key={item.size}>
-												<input
-													type="radio"
-													id={item.size}
-													value={item.size}
-													name="size"
-													className="radio-button"
-												/>
-												<label htmlFor={item.size}>{item.size}</label>
-											</div>
-										);
-									} else {
-										return (
-											<div className="size-button" key={item.size}>
-												<input
-													type="radio"
-													id={item.size}
-													value={item.size}
-													name="size"
-													className="radio-button"
-													disabled
-												/>
-												<label htmlFor={item.size} className="out-of-stock">
-													{item.size}
-												</label>
-											</div>
-										);
-									}
-								})}
-							</div>
-							<label>Quantity:</label>
-							<div className="quantity-container">
-								<button onClick={decrement} className="quantity-button">
-									-
-								</button>
-								<input type="text" placeholder={quantity} />
-								<button onClick={increment} className="quantity-button">
-									+
-								</button>
-							</div>
-							<br />
-							<p>Enjoy FREE RETURNS on all orders.</p>
-							<input
-								type="submit"
-								className="addToCartButton"
-								value={`Add to Basket $${genericItem.price}`}
-							/>
-							{/* Add Logic for Sale Item */}
-						</form>
+						{/* <form onSubmit={addToCart}> */}
+						<label>Size:</label>
+						<div className="size-container">
+							{item.map(item => {
+								if (item.quantity > 0) {
+									return (
+										<div className="size-button" key={item.size}>
+											<input
+												type="radio"
+												id={item.size}
+												value={item.size}
+												name="size"
+												className="radio-button"
+												ref={size}
+											/>
+											<label htmlFor={item.size}>{item.size}</label>
+										</div>
+									);
+								} else {
+									return (
+										<div className="size-button" key={item.size}>
+											<input
+												type="radio"
+												id={item.size}
+												value={item.size}
+												name="size"
+												className="radio-button"
+												disabled
+											/>
+											<label htmlFor={item.size} className="out-of-stock">
+												{item.size}
+											</label>
+										</div>
+									);
+								}
+							})}
+						</div>
+						<label>Quantity:</label>
+						<div className="quantity-container">
+							<button onClick={decrement} className="quantity-button">
+								-
+							</button>
+							<input type="text" placeholder={quantity} />
+							<button onClick={increment} className="quantity-button">
+								+
+							</button>
+						</div>
+						<br />
+						<p>Enjoy FREE RETURNS on all orders.</p>
+						<button
+							type="submit"
+							className="addToCartButton"
+							value={`Add to Basket $${genericItem.price}`}
+							onClick={addToCart}
+						/>
+						{/* </form> */}
 					</div>
 				</>
 			) : (
