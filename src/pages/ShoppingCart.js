@@ -38,24 +38,28 @@ export default function ShoppingCart({ history }) {
 								<th></th>
 								<th>
 									<p className="emphasize">Item</p>
+									<hr />
 								</th>
 								<th>
 									<p className="emphasize">Item Price</p>
+									<hr />
 								</th>
 								<th>
 									<p className="emphasize">Quantity</p>
+									<hr />
 								</th>
 								<th>
 									<p className="emphasize">Total Price</p>
+									<hr />
 								</th>
 							</tr>
 							{cart.map(item => {
 								return (
 									<tr key={item._id}>
-										<td>
+										<td className="image-column">
 											<img src={item.product.image} className="product-image" />
 										</td>
-										<td>
+										<td className="product-details-column">
 											<p className="emphasize">{item.product.name}</p>
 											<p>
 												<span className="emphasize">Style #</span>{' '}
@@ -73,13 +77,13 @@ export default function ShoppingCart({ history }) {
 												Remove
 											</a>
 										</td>
-										<td>
+										<td className="price-column">
 											<p>${item.product.price}</p>
 										</td>
-										<td>
+										<td className="qty-column">
 											<p>{item.product.qty}</p>
 										</td>
-										<td>
+										<td className="total-column">
 											<p className="emphasize">
 												${item.product.price * item.product.qty}
 											</p>
@@ -92,10 +96,18 @@ export default function ShoppingCart({ history }) {
 					<div className="order-summary">
 						<h2>Order Summary</h2>
 						<div className="order-details">
-							<p>Subtotal: ${cartTotal}</p>
-							<p>Shipping: TBD</p>
-							<p>Estimated Tax: $0</p>
-							<p className="emphasize">Total: ${cartTotal}</p>
+							<p>
+								Subtotal <span className="right-align">${cartTotal}</span>
+							</p>
+							<p>
+								Shipping <span className="right-align">TBD</span>
+							</p>
+							<p>
+								Estimated Tax <span className="right-align">$0</span>
+							</p>
+							<p className="emphasize">
+								Total <span className="right-align">${cartTotal}</span>
+							</p>
 							<Link to={{ pathname: '/checkout', state: cartTotal }}>
 								<button type="button" className="checkout-button">
 									Checkout
