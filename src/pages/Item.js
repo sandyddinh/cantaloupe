@@ -1,3 +1,4 @@
+import { AfterpayClearpayMessageElement } from '@stripe/react-stripe-js';
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function Item(props) {
@@ -12,9 +13,9 @@ export default function Item(props) {
 	// const price = useRef();
 	// const qty = useRef();
 	const [mainImage, setMainImage] = useState();
-	const [updateImage, setUpdateImage] = useState(false);
 	const [size, setSize] = useState('');
 	const [purchasePrice, setPurchasePrice] = useState();
+	const [cartNotification, setCartNotification] = useState(false);
 
 	const increment = () => {
 		setQuantity(quantity + 1);
@@ -32,11 +33,6 @@ export default function Item(props) {
 		} else {
 			setPurchasePrice(item.price);
 		}
-	};
-
-	const changeImage = img => {
-		setMainImage(img);
-		setUpdateImage(true);
 	};
 
 	const findAllOfItem = item => {
@@ -77,7 +73,7 @@ export default function Item(props) {
 				console.error(error);
 			}
 		})();
-	}, [updateImage]);
+	}, []);
 
 	const addToCart = async e => {
 		e.preventDefault();
@@ -105,6 +101,7 @@ export default function Item(props) {
 					}
 				})
 			});
+			setCartNotification(true);
 		} catch (error) {
 			console.error(error);
 		}
@@ -149,7 +146,7 @@ export default function Item(props) {
 							Color: <span className="emphasize">{genericItem.color}</span>
 						</p>
 						<p>{genericItem.description}</p>
-						{/* <form onSubmit={addToCart}> */}
+
 						<label>Size:</label>
 						<div className="size-container">
 							{item.map(item => {
@@ -208,7 +205,11 @@ export default function Item(props) {
 						>
 							Add to Basket ${genericItem.price}
 						</button>
-						{/* </form> */}
+						{cartNotification ? (
+							<p className="ok-message">Added to cart!</p>
+						) : (
+							''
+						)}
 					</div>
 				</>
 			) : (

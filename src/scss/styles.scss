@@ -307,6 +307,14 @@ a:hover {
       text-align: center;
     }
   }
+
+  .ok-message {
+    text-align: center;
+    color: $teal;
+    text-transform: uppercase;
+    padding: 10px;
+  }
+
 }
 
 .ShoppingCartPage {
