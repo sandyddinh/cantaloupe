@@ -4,15 +4,10 @@ import { Link } from 'react-router-dom';
 const NavBar = props => {
 	return (
 		<nav className="NavBar">
-			{/* {props.routes
-				.filter(page => !page.path.includes(':') || !page.key == 'App')
-				.map(({ key, path }) => (
-					<Link key={key} to={path}>
-						{key}
-					</Link>
-				))} */}
 			<div className="nav-banner">Spend $100+ for free shipping anywhere!</div>
-			<h1 className="brand-name">C a n t a l o u p e</h1>
+			<h1 className="brand-name">
+				<a href="/">C a n t a l o u p e</a>
+			</h1>
 			<div className="categories">
 				<Link key={'Clothing'} to={'/clothing'}>
 					<h2 className="category-name">Clothing</h2>

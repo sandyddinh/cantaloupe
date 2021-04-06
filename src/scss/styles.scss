@@ -35,13 +35,15 @@ a:hover {
   height: 120x;
   background-color: white;
   text-align: center;
-
   .brand-name {
     font-family: 'Playfair Display', serif;
     color: $grey;
     font-size: 48px;
     text-transform: uppercase;
     padding: 15px 0;
+    a:hover{
+      color: $teal;
+    }
   }
   .nav-banner {
   display: flex;
