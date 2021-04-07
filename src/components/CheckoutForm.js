@@ -9,8 +9,6 @@ import {
 import axios from 'axios';
 
 function CheckoutForm(props) {
-	console.log(props);
-	// console.log(this.props.elements);
 	const totalAmount = props.props.location.state;
 
 	if (totalAmount === 0) props.props.history.push('/');
@@ -43,17 +41,48 @@ function CheckoutForm(props) {
 
 	return (
 		<div className="checkout-form">
-			<p>Amount: ${totalAmount}</p>
 			<form onSubmit={handleSubmit}>
-				<label>
-					Card details
+				<label>Shipping Address</label>
+				<div className="checkout-form-line-1">
+					<div className="form-group">
+						<input type="text" id="name" placeholder="Name"></input>
+					</div>
+				</div>
+				<div className="checkout-form-line-2">
+					<div className="form-group">
+						<input type="text" id="email" placeholder="Email"></input>
+					</div>
+				</div>
+				<div className="checkout-form-line-2">
+					<div className="form-group">
+						<input type="text" id="phone" placeholder="Phone"></input>
+					</div>
+				</div>
+				<div className="checkout-form-line-3">
+					<div className="form-group">
+						<input type="text" id="address" placeholder="Address"></input>
+					</div>
+				</div>
+				<div className="checkout-form-line-4">
+					<div className="form-group">
+						<input type="text" id="city" placeholder="City"></input>
+					</div>
+					<div className="form-group">
+						<input type="text" id="state" placeholder="State"></input>
+					</div>
+					<div className="form-group">
+						<input type="text" id="zip" placeholder="ZIP"></input>
+					</div>
+				</div>
+				<label id="card-number">
+					Card Number
 					<CardNumberElement />
 				</label>
-				<label>
-					Expiration date
+				<label id="card-exp-date">
+					Exp
 					<CardExpiryElement />
 				</label>
-				<label>
+				<label id="card-cvc-number">
 					CVC
 					<CardCVCElement />
 				</label>
