@@ -26,21 +26,22 @@ export default function ShoppingCart({ history }) {
 		})();
 	}, []);
 
-	// const handleDelete = async id => {
-	// 	try {
-	// 		const response = await fetch(`/api/cantaloupe/cart/${id}`, {
-	// 			method: 'DELETE',
-	// 			headers: {
-	// 				'Content-Type': 'application/json'
-	// 			}
-	// 		});
-	// 		const data = await response.json();
-	// 	} catch (error) {
-	// 		console.error(error);
-	// 	} finally {
-	// 		window.location.assign('/cart');
-	// 	}
-	// };
+	const handleDelete = async (event, id) => {
+		event.preventDefault();
+		try {
+			const response = await fetch(`/api/cantaloupe/cart/${id}`, {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
+			const data = await response.json();
+		} catch (error) {
+			console.error(error);
+		} finally {
+			window.location.assign('/cart');
+		}
+	};
 
 	return (
 		<div className="ShoppingCartPage">
@@ -89,7 +90,10 @@ export default function ShoppingCart({ history }) {
 												<span className="emphasize">Size</span>{' '}
 												{item.product.size}
 											</p>
-											<button className="delete-shopping-cart-item">
+											<button
+												className="delete-shopping-cart-item"
+												onClick={event => handleDelete(event, item._id)}
+											>
 												Remove
 											</button>
 											{/* <a href={`/api/cantaloupe/cart/${item._id}`} className="remove-link">
