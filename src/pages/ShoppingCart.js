@@ -144,6 +144,7 @@ export default function ShoppingCart({ history }) {
 					<h2>
 						<a href="/">Continue shopping!</a>
 					</h2>
+					<br />
 					<img src="https://res.cloudinary.com/dxuoqqfve/image/upload/v1617841233/cantaloupe/empty-rack_lppzp9.jpg" />
 				</div>
 			)}

@@ -361,7 +361,9 @@ a:hover {
     font-size: 18px;
   }
   .empty-cart{
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0 auto;
     padding-top: 20px;
     width: 50vw;
