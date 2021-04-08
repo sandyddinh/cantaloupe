@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const NavBar = props => {
 	return (
 		<nav className="NavBar">
-			<div className="nav-banner">Spend $100+ for free shipping anywhere!</div>
+			<div className="nav-banner">New Spring Collection Has Landed!</div>
 			<h1 className="brand-name">
 				<a href="/">C a n t a l o u p e</a>
 			</h1>
