@@ -356,7 +356,8 @@ a:hover {
   margin: 0 auto;
   width: 90%;
   padding-bottom: 30px;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   h2 {
     font-size: 18px;
   }
@@ -469,7 +470,8 @@ a:hover {
   padding-bottom: 30px;
   font-family: 'Nunito', sans-serif;
   font-size: 14px;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   .checkout-right{
     text-align: center;
     padding: 40px;
