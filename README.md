@@ -28,11 +28,11 @@ Cantaloupe is an e-commerce store leveraging Stripe's payment platform.
 
 #### Color Pallet
 
-```
--    ![#E29578](http://via.placeholder.com/15/E29578/000000?text=+) `#E29578`
--    ![#006D77](http://via.placeholder.com/15/006D77/000000?text=+) `#006D77`
--    ![#463F3A](http://via.placeholder.com/15/463F3A/000000?text=+) `#463F3A`
-```
+
+*    ![#E29578](http://via.placeholder.com/15/E29578/000000?text=+) `#E29578`
+*    ![#006D77](http://via.placeholder.com/15/006D77/000000?text=+) `#006D77`
+*    ![#463F3A](http://via.placeholder.com/15/463F3A/000000?text=+) `#463F3A`
+
 
 #### User Stories
 
