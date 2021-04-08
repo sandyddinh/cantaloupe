@@ -20,7 +20,7 @@ function CheckoutForm(props) {
 
 		const { token } = await props.stripe.createToken();
 
-		const order = await axios.post('http://localhost:3000/api/stripe/charge', {
+		const order = await axios.post('/api/stripe/charge', {
 			amount: (totalAmount * 100).toString().replace('.', ''),
 			source: token.id,
 			receipt_email: 'support@cataloupe.com'
@@ -34,7 +34,6 @@ function CheckoutForm(props) {
 			<div className="success">
 				<h2>Payment Successful!</h2>
 				<a href={receiptUrl}>View Receipt</a>
-				<Link to="/">Home</Link>
 			</div>
 		);
 	}
