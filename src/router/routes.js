@@ -1,7 +1,4 @@
-import React from 'react';
 import App from '../pages/App';
-import About from '../pages/About';
-import Home from '../pages/Home';
 import Clothing from '../pages/Clothing';
 import Activewear from '../pages/Activewear';
 import Item from '../pages/Item';
@@ -41,11 +38,6 @@ const routes = [
 		key: 'Checkout',
 		path: '/checkout'
 	},
-	// {
-	// 	Component: About,
-	// 	key: 'About',
-	// 	path: '/about'
-	// },
 	{
 		Component: Item,
 		key: 'Item',

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function ShoppingCart({ history }) {
+export default function ShoppingCart(props) {
 	const [cart, setCart] = useState([]);
 	const [cartTotal, setCartTotal] = useState(0);
 
@@ -96,9 +96,6 @@ export default function ShoppingCart({ history }) {
 											>
 												Remove
 											</button>
-											{/* <a href={`/api/cantaloupe/cart/${item._id}`} className="remove-link">
-												
-											</a> */}
 										</td>
 										<td className="price-column">
 											<p>${item.product.price}</p>

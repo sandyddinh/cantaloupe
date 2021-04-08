@@ -1,17 +1,10 @@
-import { AfterpayClearpayMessageElement } from '@stripe/react-stripe-js';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Item(props) {
-	// console.log('testing props');
-	// console.log(props);
 	const items = props.location.state;
-	// console.log(items);
 	const [genericItem, setGenericItem] = useState({});
 	const [item, setItem] = useState([]);
 	const [quantity, setQuantity] = useState(0);
-	// const productId = useRef();
-	// const price = useRef();
-	// const qty = useRef();
 	const [mainImage, setMainImage] = useState();
 	const [size, setSize] = useState('');
 	const [purchasePrice, setPurchasePrice] = useState();
@@ -40,7 +33,6 @@ export default function Item(props) {
 			return product.name == item.name;
 		});
 		setItem(foundProduct);
-		// console.log('found product' + typeof foundProduct);
 	};
 
 	let foundProductIdBySize = '';
@@ -48,13 +40,11 @@ export default function Item(props) {
 		const foundProduct = items.filter(product => {
 			return product.name == item.name;
 		});
-		// console.log(foundProduct);
 		for (let i = 0; i < foundProduct.length; i++) {
 			if (size == foundProduct[i].size) {
 				foundProductIdBySize = foundProduct[i]._id;
 			}
 		}
-		// console.log('in the function' + foundProductIdBySize);
 	};
 
 	useEffect(() => {
@@ -68,7 +58,6 @@ export default function Item(props) {
 				setMainImage(data.image[0]);
 				findAllOfItem(data);
 				findPurchasePrice(data);
-				// findSizes(data);
 			} catch (error) {
 				console.error(error);
 			}
@@ -77,11 +66,9 @@ export default function Item(props) {
 
 	const addToCart = async e => {
 		e.preventDefault();
-		// const totalPrice = genericItem.price * quantity;
 		await findProductBySize(genericItem);
-		// console.log('before try' + foundProductIdBySize);
 		console.log(
-			'purchasing size: ' + size + ' and product id ' + foundProductIdBySize
+			'purchasing size: ' + size + ' and product id: ' + foundProductIdBySize
 		);
 		try {
 			const response = await fetch('/api/cantaloupe/cart', {
@@ -121,7 +108,6 @@ export default function Item(props) {
 						})}
 					</div>
 					<div className="main-image">
-						{/* <img src={`${genericItem.image[0]}`} /> */}
 						<img src={mainImage} />
 					</div>
 					<div className="product-information">
@@ -146,7 +132,6 @@ export default function Item(props) {
 							Color: <span className="emphasize">{genericItem.color}</span>
 						</p>
 						<p>{genericItem.description}</p>
-
 						<label>Size:</label>
 						<div className="size-container">
 							{item.map(item => {
