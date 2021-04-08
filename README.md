@@ -50,8 +50,8 @@ Cantaloupe is an e-commerce store leveraging Stripe's payment platform.
 
 #### Stretch goals
 
-* Add authorization
-* Add admin role to manage inventory
+* Authorization
+* Admin role to manage inventory
 * Responsive design
 
 ## Challenges:
