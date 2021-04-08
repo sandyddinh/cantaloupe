@@ -88,7 +88,6 @@ a:hover {
 }
 
 .Footer {
-  // background-color: $cantaloupe;
   background-image: linear-gradient(to bottom right, #ffd6ba, $cantaloupe);
   display: flex;
   justify-content: space-around;
@@ -182,13 +181,11 @@ a:hover {
   .products-display {
     display: flex;
     flex-wrap: wrap;
-    // justify-content: space-between;
     justify-content: flex-start;
   }
   .product-container {
     height: auto;
     width: 23%;
-    // border: 1px solid red;
     margin: 10px;
   }
 }
@@ -386,7 +383,6 @@ a:hover {
     text-transform: uppercase;
   }
   .cart-container {
-    // border: 1px solid green;
     width: 70%;
   }
   table, tr, th, td, p {
@@ -396,7 +392,6 @@ a:hover {
     outline: 0;
     font-size: 100%;
     vertical-align: middle;
-    // background: transparent;
   }
   th, tr {
     padding: 5px 0px;
@@ -419,7 +414,6 @@ a:hover {
   .order-summary{
     width: 20%;
     height: 300px;
-    // border: 1px solid red;
     padding: 10px;
     text-align: left;
   }
@@ -433,9 +427,6 @@ a:hover {
   }
   .checkout-button {
     display: inline-block;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
     text-align: center;
     line-height: 40px;
     width: 97%;
@@ -518,12 +509,6 @@ a:hover {
     width: 100vw;
   }
   form {
-    // width: 30vw;
-    // align-self: center;
-    // box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
-    //   0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
-    // border-radius: 7px;
-    // padding: 40px;
     text-align: left;
   }
   .checkout-form-line-4 {
