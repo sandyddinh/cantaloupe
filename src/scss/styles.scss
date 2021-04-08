@@ -356,8 +356,20 @@ a:hover {
   margin: 0 auto;
   width: 90%;
   padding-bottom: 30px;
+  height: 100vh;
+  text-align: center;
   h2 {
     font-size: 18px;
+  }
+  .empty-cart{
+    display: inline-block;
+    margin: 0 auto;
+    padding-top: 20px;
+    width: 50vw;
+    img {
+      max-width: 100%;
+      padding: 20px;
+    }
   }
   .product-image {
     width: 100px;

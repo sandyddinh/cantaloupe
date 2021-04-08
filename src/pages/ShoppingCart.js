@@ -140,9 +140,11 @@ export default function ShoppingCart({ history }) {
 					</div>
 				</>
 			) : (
-				<div>
-					<h2>Your cart is empty</h2>
-					<h3>Continue Shopping Link</h3>
+				<div className="empty-cart">
+					<h2>
+						<a href="/">Continue shopping!</a>
+					</h2>
+					<img src="https://res.cloudinary.com/dxuoqqfve/image/upload/v1617841233/cantaloupe/empty-rack_lppzp9.jpg" />
 				</div>
 			)}
 		</div>
