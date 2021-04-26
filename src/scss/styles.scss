@@ -877,6 +877,68 @@ $grey: #463f3a;
     }
   }
 
+  .ClothingPage, .ActivewearPage, .AccessoriesPage, .SalePage {
+    // width: calc( 100vw - 200px);
+    display: flex;
+    justify-content: center;
+    height: auto;
+    background-color: white;
+    font-family: 'Nunito', sans-serif;
+    color: $grey;
+    font-size: 1.4rem;
+    padding: 0 20px 0 0;
+    .product-image {
+      position: relative;
+      max-width: 100%;
+      .product-image-hover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        object-fit: contain;
+        opacity: 0;
+        transition: opacity .2s;
+      }
+      &:hover .product-image-hover {
+        opacity: 1;
+      }
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    .item-name, .item-price {
+      font-weight: 600;
+      font-family: 'Nunito', sans-serif;
+      color: $grey;
+      font-size: 12px;
+    }
+    .item-price {
+      font-weight: normal;
+    }
+    .sale-price {
+      color: $cantaloupe;
+    }
+    .original-price {
+      text-decoration: line-through;
+    }
+    .products-display {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      // margin: 0 auto;
+      border: 1px solid blue;
+      padding: 5vw;
+    }
+    .product-container {
+      height: auto;
+      width: 45%;
+      margin: 10px;
+    }
+  }
+
 }
 
 @media only screen and (min-width: 776px) {
