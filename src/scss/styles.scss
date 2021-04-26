@@ -663,7 +663,23 @@ $grey: #463f3a;
 
 
 @media only screen and (max-width: 775px){
-
+  body {
+    overflow-x: hidden;
+    font-size: 62.5%;
+    height: calc(100vh - 120px);
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    color: $grey;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    a {
+      color: inherit;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+  }
   .NavBar {
     .categories {
       display: none;
@@ -754,6 +770,7 @@ $grey: #463f3a;
       #menu {
         position: absolute;
         width: 300px;
+        height: 110vh;
         margin: -100px 0 0 -50px;
         padding: 50px;
         padding-top: 125px;
@@ -786,7 +803,7 @@ $grey: #463f3a;
     .brand-name a{
       font-family: 'Playfair Display', serif;
       color: $grey;
-      font-size: 48px;
+      font-size: 2.4rem;
       text-transform: uppercase;
       padding: 15px 0;
       &:hover{
