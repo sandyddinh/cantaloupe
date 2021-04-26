@@ -819,6 +819,27 @@ $grey: #463f3a;
     }
   }
 
+  .AppPage {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    img {
+      max-width: 100%;
+      height: auto;
+      padding: 20px;
+    }
+    
+    .top-section, .bottom-section {
+      width: 80vw;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+    }
+    .top-section, .bottom-left-section, .bottom-right-section {
+      width: 80vw;
+    }
+  }
+
 }
 
 @media only screen and (min-width: 776px) {
