@@ -940,6 +940,8 @@ $grey: #463f3a;
   .ItemPage {
     display: flex;
     flex-direction: column;
+    width: 90vw;
+    margin: 0 auto;
     .sale-price {
       color: $cantaloupe;
     }
@@ -961,30 +963,37 @@ $grey: #463f3a;
     }
   
    .image-previews {
+     order: 2;
      background-color: white;
      display: flex;
-     flex-direction: column;
+     flex-direction: row;
      width: 200px;
      height: auto;
      .image-small {
-      max-width: 100%;
+      // max-width: 100%;
+      width: 30vw;
       height: auto;
       cursor: pointer;
      }
    }
   
-    .main-image, .product-information {
-      width: calc(( 100vw - 200px)/2);
-      padding-bottom: 30px;
-    }
+    // .main-image, .product-information {
+    //   width: calc(( 100vw - 200px)/2);
+    //   padding-bottom: 30px;
+    // }
   
     .main-image {
+      order: 1;
       display: flex;
       justify-content: center;
+      width: 100%;
+      margin: 0 auto;
     }
   
     .product-information {
+      order: 3;
       padding: 0px 80px 0px 40px;
+      padding-bottom: 50px;
     }
   
     .item-name {
